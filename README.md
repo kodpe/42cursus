@@ -1,6 +1,6 @@
 # 42cursus
 
-All my piscine + projects has 42 - 2022
+All my piscine + projects of my 42 school cursus - 2022
 
 | projects | cc rank | grade | update |
 | --- | --- | --- | --- |
