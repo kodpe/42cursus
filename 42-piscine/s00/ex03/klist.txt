@@ -1,0 +1,5 @@
+Credentials cache: API:C1CB26C0-BD7C-4F9B-B747-1E25D753C5D0
+        Principal: sloquet@42.FR
+
+  Issued                Expires               Principal
+Aug  2 15:23:14 2021  Aug  9 15:23:01 2021  krbtgt/42.FR@42.FR
