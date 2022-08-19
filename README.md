@@ -13,4 +13,5 @@ All my piscine + projects of my 42 school cursus - 2022
 | push_swap | 2 | 100 | 13-05-22 |
 | FdF | 2 | 100 | 13-05-22 |
 | pipex | 2 | 125 | 26-05-22 |
+| minishell | 3 | 113 | 19-08-22
 
