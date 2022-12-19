@@ -2,7 +2,7 @@
 
 All my piscine + projects of my 42 school cursus - 2022
 
-| projects | cc rank | grade | update |
+| projects | cc lvl | grade | update |
 | --- | --- | --- | --- |
 | 42-piscine | - | - | 01-01-22 |
 | Libft | 0 | 125 | 13-05-22 |
@@ -16,3 +16,4 @@ All my piscine + projects of my 42 school cursus - 2022
 | minishell | 3 | 113 | 19-08-22 |
 | philosophers | 3 | 100 | 01-09-22|
 | NetPractice | 4 | 100 | 18-09-22|
+| MiniRT | 4 | 125 | 19-12-22 |
