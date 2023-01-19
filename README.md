@@ -1,6 +1,6 @@
 # 42cursus
 
-My 42 school cursus - 2022/2023
+##### My 42 school cursus - 2022/2023
 
 | projects | cc lvl | grade | update |
 | --- | --- | --- | --- |
