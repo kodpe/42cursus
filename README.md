@@ -14,6 +14,7 @@ All my piscine + projects of my 42 school cursus - 2022
 | FdF | 2 | 100 | 13-05-22 |
 | pipex | 2 | 125 | 26-05-22 |
 | minishell | 3 | 113 | 19-08-22 |
-| philosophers | 3 | 100 | 01-09-22|
-| NetPractice | 4 | 100 | 18-09-22|
+| philosophers | 3 | 100 | 01-09-22 |
+| NetPractice | 4 | 100 | 18-09-22 |
 | MiniRT | 4 | 125 | 19-12-22 |
+| CPP Modules | 4 | 100 | 18-01-23 |
