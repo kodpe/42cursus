@@ -1,0 +1,200 @@
+>> :chupacabra 353 Martin_n = #42 : @Hubert_n Martin_n
+>> :chupacabra 366 Martin_n #42 :End of NAME list.
+<< MODE #42
+>> :chupacabra 324 Martin_n #42 +
+--> chanquery mode
+<< WHO #42
+>> :chupacabra 352 Martin_n #42 Hubert_u Hubert_u 127.0.0.1 Hubert_n H :1 :HUBERT REAL
+--> FAILED mode b: chanquery abort
+<< WHO #42
+--> silent event who
+>> :chupacabra 352 Martin_n #42 Martin_u Martin_u 127.0.0.1 Martin_n H :1 :MARTIN REAL
+--> silent event who
+>> :chupacabra 315 Martin_n #42 :End of WHO list
+--> chanquery who end
+<< MODE #42 b
+>> :chupacabra 352 Martin_n #42 Hubert_u Hubert_u 127.0.0.1 Hubert_n H :1 :HUBERT REAL
+--> silent event who
+>> :chupacabra 352 Martin_n #42 Martin_u Martin_u 127.0.0.1 Martin_n H :1 :MARTIN REAL
+--> silent event who
+>> :chupacabra 315 Martin_n #42 :End of WHO list
+--> chanquery who end
+>> :chupacabra 472 Martin_n b :is unknown mode char to me
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PRIVMSG #42 :eh tarettein
+<< PING chupacabra
+>> PONG chupacabra
+--> FAILED mode b: chanquery abort
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PART #42
+>> :Martin_n!Martin_u@localhost PART #42
+<< JOIN #42
+>> :chupacabra 473 Martin_n #42 :Cannot join channel (+i)
+<< JOIN #42
+>> :Martin_n!Martin_u@localhost JOIN #42
+>> :chupacabra 353 Martin_n = #42 : @Hubert_n Martin_n
+>> :chupacabra 366 Martin_n #42 :End of NAME list.
+<< MODE #42
+>> :chupacabra 324 Martin_n #42 +
+--> chanquery mode
+<< WHO #42
+>> :chupacabra 352 Martin_n #42 Hubert_u Hubert_u 127.0.0.1 Hubert_n H :1 :HUBERT REAL
+--> silent event who
+>> :chupacabra 352 Martin_n #42 Martin_u Martin_u 127.0.0.1 Martin_n H :1 :MARTIN REAL
+--> silent event who
+>> :chupacabra 315 Martin_n #42 :End of WHO list
+--> chanquery who end
+<< MODE #42 b
+>> :chupacabra 472 Martin_n b :is unknown mode char to me
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> FAILED mode b: chanquery abort
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PRIVMSG #42 :join poire
+<< JOIN #poire
+>> :Martin_n!Martin_u@localhost JOIN #poire
+>> :chupacabra 353 Martin_n = #poire : @ouioui Martin_n
+>> :chupacabra 366 Martin_n #poire :End of NAME list.
+<< MODE #poire
+>> :chupacabra 324 Martin_n #poire +
+--> chanquery mode
+<< WHO #poire
+>> :chupacabra 352 Martin_n #poire Martin_u Martin_u 127.0.0.1 Martin_n H :1 :MARTIN REAL
+--> silent event who
+>> :chupacabra 352 Martin_n #poire oui oui 127
+--> silent event who
+>> .0.0.1 ouioui H :1 : oui oui
+--> FAILED who: chanquery abort
+<< MODE #poire b
+>> :chupacabra 315 Martin_n #poire :End of WHO list
+>> :chupacabra 472 Martin_n b :is unknown mode char to me
+<< PRIVMSG #poire :slt
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< MODE #poire +i
+>> :Martin_n!Martin_u@localhost MODE #poire +i
+<< PART #poire
+>> :Martin_n!Martin_u@localhost PART #poire
+<< JOIN #poire
+>> :chupacabra 473 Martin_n #poire :Cannot join channel (+i)
+<< PING chupacabra
+>> PONG chupacabra
+--> FAILED mode b: chanquery abort
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong
+<< PING chupacabra
+>> PONG chupacabra
+--> lag pong

@@ -1,0 +1,48 @@
+#!/bin/bash
+exec="ircserv"
+ip="127.0.0.1"
+ref="$PWD/irssi_config/config"
+cfg="${ref}_tmp_$EPOCHSECONDS"
+
+name=$1
+port=$2
+pwd=$3
+
+if [[ -z $pwd ]]; then
+	pwd="nopwd"
+fi
+
+if [[ -z $name || -z $port || -z $pwd ]]; then
+	echo "help: <client_name> <port> [pwd]"
+	exit
+fi
+
+nick="${name}_n"
+user="${name}_u"
+real=$(echo "$name real" | tr '[:lower:]' '[:upper:]')
+
+# starting ...
+clear
+cp $ref $cfg
+sed -i "s/def_real_name/$real/" $cfg
+sed -i "s/def_user_name/$user/" $cfg
+
+echo "ref : '$ref'"
+echo "cfg : '$cfg'"
+echo "exec: '$exec'"
+echo "ip  : '$ip'"
+echo "name: '$name'" # $1
+echo "port: '$port'" # $2
+echo "pwd : '$pwd'"  # $3
+echo "nick: '$nick'"
+echo "user: '$user'"
+echo "real: '$real'"
+
+(sleep 2; rm -vf "$PWD/irssi_config/config_tmp*") &
+
+irssi	-c $ip \
+		-w $pwd \
+		-p $port \
+		-n $nick \
+		--config=$cfg
+exit

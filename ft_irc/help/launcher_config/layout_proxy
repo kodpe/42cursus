@@ -1,0 +1,81 @@
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+  [[IRCPROX]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 15:53
+      maximised = False
+      fullscreen = False
+      size = 1885, 976
+      title = IRC LAUNCHER V5
+    [[[child1]]]
+      type = HPaned
+      parent = child0
+      order = 0
+      position = 613
+      ratio = 0.326063829787234
+    [[[child2]]]
+      type = VPaned
+      parent = child1
+      order = 0
+      position = 479
+      ratio = 0.4933058702368692
+    [[[terminal3]]]
+      type = Terminal
+      parent = child2
+      order = 0
+      profile = default
+      uuid = cdfd58e1-b4d3-4393-afee-161e79162427
+      command = ./launcher_server; zsh
+      directory = IRC_CONFIG_PATH
+    [[[terminal4]]]
+      type = Terminal
+      parent = child2
+      order = 1
+      profile = default
+      uuid = 63f8e7c5-bd24-4f12-8e5b-dfadeab32984
+      command = while true; do; clear; cat valglogs; sleep 0.5; done; zsh
+      directory = IRC_CONFIG_PATH
+    [[[child5]]]
+      type = HPaned
+      parent = child1
+      order = 1
+      position = 668
+      ratio = 0.5293185419968305
+    [[[terminal6]]]
+      type = Terminal
+      parent = child5
+      order = 0
+      profile = default
+      uuid = 3c6b9d33-4048-41b8-b45c-ff431678e466
+      command = sleep 1; python3 proxy.py 127.0.0.1:5555 127.0.0.1:$(<arg_port); zsh
+      directory = IRC_CONFIG_PATH
+    [[[child7]]]
+      type = VPaned
+      parent = child5
+      order = 1
+      position = 501
+      ratio = 0.5159629248197735
+    [[[terminal8]]]
+      type = Terminal
+      parent = child7
+      order = 0
+      profile = default
+      uuid = 68cb9096-53e5-4f63-be25-ecb2f0bf7b4b
+      command = sleep 3; ./irssi_one_client Hubert 5555 $(<arg_pass); zsh
+      directory = IRC_CONFIG_PATH
+    [[[terminal9]]]
+      type = Terminal
+      parent = child7
+      order = 1
+      profile = default
+      uuid = 23c503e2-6e94-41ca-8ab2-5a6302c7f4c6
+      command = sleep 3.5; ./irssi_one_client Martin 5555 $(<arg_pass); zsh
+      directory = IRC_CONFIG_PATH

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+term_config="$HOME/.config/terminator/config"
+
+make -j || exit 1
+
+rm -f launcher_config/irssi_config/config_tmp_*
+echo >launcher_config/valglogs
+
+val=$(cat $term_config | grep "IRC LAUNCHER V5" | wc -l)
+
+if [[ "$1" == "-u" ]]; then
+	val=0
+fi
+
+if [[ $val -eq 1 ]];then
+	terminator -l IRCPROX
+	exit
+else
+	./launcher_config/update_config.sh
+	echo -e "\033[33mYou need to close all terminator instances and restart it to use the new config\033[0m"
+fi
+

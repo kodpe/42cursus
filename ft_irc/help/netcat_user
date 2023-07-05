@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+if [[ ! -e ./netcat_pipe ]]; then
+	mkfifo netcat_pipe
+fi
+
+ctrl_c_handler() {
+  if [[ -e ./netcat_pipe ]]; then
+ 	 rm netcat_pipe
+  fi
+  exit 0
+}
+trap ctrl_c_handler SIGINT
+
+while true; do cat netcat_pipe; done | nc localhost 4258 &
+
+sleep 0.5
+
+echo -e "CAP LS\r" > netcat_pipe
+sleep 0.3
+echo -e "PASS pwd\r" > netcat_pipe
+sleep 0.3
+echo -e "NICK netcat_nick\r" > netcat_pipe
+sleep 0.3
+echo -e "USER netcat_user netcat_user 127.0.0.1 REAL\r" > netcat_pipe
+
+while true; do
+	echo "enter your command (carriage return will be added)"
+	read input
+	echo -n $input > netcat_pipe
+	echo -e "\r" > netcat_pipe
+done
+
+if [[ -e ./netcat_pipe ]]; then
+       rm netcat_pipe
+fi

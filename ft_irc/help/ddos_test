@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+for ((i = 0 ; i < 100; i++)); do
+	nc localhost 5555 &
+done
+
