@@ -21,7 +21,8 @@
 | exam-rank-4 | 4 | 100 | 21-03-23 |
 | CPP Modules 05-09 | 5 | 100 | 25-04-23 |
 | ft_irc | 5 | 110 | 04-07-23 |
-| Inception | 5 | | -07-23 |
-| exam-rank-5 | 5 |  | -08-23 |
-| exam-rank-6 | 5 |  | -08-23 |
+| Inception | 5 | 100 | 23-10-23 |
+| exam-rank-5 | 5 |  | -10-23 |
+| exam-rank-6 | 6 |  | -11-23 |
+| ft_transcendence | 6 | | -12-24 |
 
