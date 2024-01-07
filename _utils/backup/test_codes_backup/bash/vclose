@@ -1,0 +1,6 @@
+#!/bin/bash
+sleep $1 2>/dev/null
+pkill gnome-system-mo
+pkill gnome-system-monitor
+pkill terminator
+echo -e "\033[1;32mClose done!\033[0m"

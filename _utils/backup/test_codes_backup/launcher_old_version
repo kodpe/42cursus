@@ -1,0 +1,97 @@
+#!/bin/bash
+gbar="\033[32m ---------------\033[0m"
+rbar="\033[31m ---------------\033[0m"
+exec="ircserv"
+rm -f $exec
+make -j
+if [[ -x $exec ]]; then
+		echo -e $gbar
+	else
+		echo -e $rbar
+		exit
+fi
+
+ip="127.0.0.1"
+ref="$PWD/irssi_config/config"
+cfg="${ref}_tmp_$EPOCHSECONDS"
+
+
+name=$1
+port=$2
+pwd=$3
+
+if [[ -z $pwd ]]; then
+	pwd="nopwd"
+fi
+
+if [[ -z $name || -z $port || -z $pwd ]]; then
+	name="hubert"
+	port=$(( ( RANDOM % 50) + 4243))
+	echo "help: <client_name> <port> [pwd]"
+	# exit
+fi
+
+nick="${name}_n"
+user="${name}_u"
+real=$(echo "$name real" | tr '[:lower:]' '[:upper:]')
+
+clear
+echo -e $gbar
+echo "create new configs..."
+cp $ref $cfg
+sed -i "s/def_real_name/$real/" $cfg
+sed -i "s/def_user_name/$user/" $cfg
+
+echo "ref : '$ref'"
+echo "cfg : '$cfg'"
+echo "exec: '$exec'"
+echo "ip  : '$ip'"
+echo "name: '$name'" # $1
+echo "port: '$port'" # $2
+echo "pwd : '$pwd'"  # $3
+echo "nick: '$nick'"
+echo "user: '$user'"
+echo "real: '$real'"
+
+echo -e $gbar
+echo "starting clients..."
+#1320 max height
+terminator \
+		--geometry 750x500+20+20 \
+		--command="sleep 1; ./irssi_one_client ${name}_a $port $pwd; zsh" 2>/dev/null &
+terminator \
+		--geometry 750x500+820+20 \
+		--command="sleep 1; ./irssi_one_client ${name}_b $port $pwd; zsh" 2>/dev/null &
+# terminator \
+# 		--geometry 700x1350+1410+20 \
+# 		--command="sleep 1; ./irssi_one_client ${name}_c $port $pwd; zsh" 2>/dev/null &
+
+echo -e $gbar
+echo "starting server..."
+valgrind					\
+	--show-leak-kinds=all	\
+	--track-origins=yes		\
+	--leak-check=full		\
+	--track-fds=yes			\
+	./$exec $port $pwd 2>valgrind_logs
+	#./$exec $port $pwd 2>&1 | tee SERVER_LOGS
+	# --trace-children=yes	\
+
+sleep 0.1
+echo -e $gbar
+echo "rm tmp files..."
+rm -vf irssi_config/config_tmp_*
+
+echo -e $gbar
+echo "See complete server logs -> ./SERVER_LOGS"
+echo -e $gbar
+cat valgrind_logs
+echo -e $gbar
+echo Done
+exit
+
+# sleep 20
+# echo "             auto close in $1 sec"
+# ./vclose $1 &
+# echo Done
+# exit

@@ -1,0 +1,66 @@
+#include "Warlock.hpp"
+#include "Fwoosh.hpp"
+#include "Dummy.hpp"
+#include "Fireball.hpp"
+#include "Polymorph.hpp"
+#include "BrickWall.hpp"
+#include "TargetGenerator.hpp"
+
+int main()
+{
+	Warlock richard("Richard", "foo");
+  richard.setTitle("Hello, I'm Richard the Warlock!");
+  BrickWall model1;
+
+  Polymorph* polymorph = new Polymorph();
+  TargetGenerator tarGen;
+
+  tarGen.learnTargetType(&model1);
+  richard.learnSpell(polymorph);
+
+  Fireball* fireball = new Fireball();
+
+  richard.learnSpell(fireball);
+
+  ATarget* wall = tarGen.createTarget("Inconspicuous Red-brick Wall");
+
+  richard.introduce();
+  richard.launchSpell("Polymorph", *wall);
+  richard.launchSpell("Fireball", *wall);
+
+  delete polymorph;
+  delete fireball;
+
+
+
+  Warlock richard3("Richard3", "the Titled");
+
+  Dummy bob;
+  Fwoosh* fwoosh = new Fwoosh();
+
+  richard3.learnSpell(fwoosh);
+
+  richard3.introduce();
+  richard3.launchSpell("Fwoosh", bob);
+
+  richard3.forgetSpell("Fwoosh");
+  richard3.launchSpell("Fwoosh", bob);
+
+  delete fwoosh;
+
+  Warlock const richard2("Richard2", "Mistress of Magma");
+  richard2.introduce();
+  std::cout << richard2.getName() << " - " << richard2.getTitle() << std::endl;
+
+  Warlock* jack = new Warlock("Jack", "the Long");
+  jack->introduce();
+  jack->setTitle("the Mighty");
+  jack->introduce();
+
+  delete jack;
+
+  return (0);
+  #if 0
+#endif
+}
+

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+gbar="\033[32m ---------------\033[0m"
+rbar="\033[31m ---------------\033[0m"
+
+EXEC="ircserv"
+PORT=$1
+
+clear
+rm -f $EXEC
+make
+if [[ -x $EXEC ]]; then
+	echo "valgrind --... ./ircserv $PORT"
+	echo -e $gbar
+	valgrind					\
+		--show-leak-kinds=all	\
+		--track-origins=yes		\
+		--leak-check=full		\
+		--track-fds=yes			\
+		./$EXEC $PORT nopwd
+		# --trace-children=yes	\
+	else
+		echo -e $rbar
+fi
