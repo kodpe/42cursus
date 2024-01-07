@@ -1,0 +1,18 @@
+#!/bin/bash
+sleep 1
+cd .eamar
+TIME=$1
+if [ $# -eq 0 ] || [ $1 -gt 300 ]; then
+	TIME=20
+fi
+sleep $TIME && sleep 0.4 && pkill luigi >/dev/null & echo -n""
+sleep $TIME && sleep 0.6 && pkill eamar >/dev/null & echo -n""
+for ((i = 0 ; i < 40 ; i++)); do
+	sleep $i && ./.eamar.exe >/dev/null & echo -n""
+	if [ $i -eq 10 ]; then
+		sleep $i && ./.luigi.exe >/dev/null & echo -n""
+	fi
+done
+sleep $TIME && sleep 0.4 && pkill luigi >/dev/null & echo -n""
+sleep $TIME && sleep 0.6 && pkill eamar >/dev/null & echo -n""
+

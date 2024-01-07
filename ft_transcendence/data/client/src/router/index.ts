@@ -1,0 +1,178 @@
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { useMainStore } from "@/stores/main";
+
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/",
+    name: "root",
+    redirect: "/auth/sign-in",
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ProfileView.vue"),
+  },
+  {
+    path: "/profile/:userId",
+    name: "otherProfile",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/ProfileView.vue"),
+  },
+  {
+    path: "/auth",
+    name: "auth",
+    component: () => import("../views/AuthScreen/AuthMainView.vue"),
+    children: [
+      {
+        path: "sign-in",
+        name: "signIn",
+        component: () => import("../views/AuthScreen/AuthSignInView.vue"),
+      },
+      {
+        path: "2FA-enable",
+        name: "2FAEnable",
+        component: () => import("../views/AuthScreen/Auth2FAEnableView.vue"),
+      },
+      {
+        path: "2FA-QR",
+        name: "2FAQR",
+        component: () => import("../views/AuthScreen/Auth2FAQRView.vue"),
+      },
+      {
+        path: "2FA-code",
+        name: "2FACode",
+        component: () => import("../views/AuthScreen/Auth2FACodeView.vue"),
+      },
+    ],
+  },
+  {
+    path: "/pong",
+    name: "pong",
+    component: () => import("../views/PongView.vue"),
+  },
+  {
+    path: "/friends",
+    name: "friends",
+    component: () => import("../views/FriendsView.vue"),
+  },
+  {
+    path: "/channels",
+    name: "channels",
+    component: () => import("../views/Channels/ChannelsView.vue"),
+    children: [
+      {
+        path: "my-channels",
+        name: "myChannels",
+        component: () => import("../views/Channels/MyChannelsView.vue"),
+      },
+      {
+        path: "explore",
+        name: "exploreChannels",
+        component: () => import("../views/Channels/ExploreChannelsView.vue"),
+      },
+      {
+        path: "create",
+        name: "createChannel",
+        component: () => import("../views/Channels/CreateChannelView.vue"),
+      },
+    ],
+  },
+  {
+    path: "/channels/:channelId/settings",
+    name: "channelSettings",
+    component: () => import("../views/Channels/ChannelSettingsView.vue"),
+    children: [
+      {
+        path: "general",
+        name: "channelSettingsGeneral",
+        component: () =>
+          import("../views/Channels/ChannelSettingsGeneralView.vue"),
+      },
+      {
+        path: "members",
+        name: "channelSettingsMembers",
+        component: () =>
+          import("../views/Channels/ChannelSettingsMembersView.vue"),
+      },
+      {
+        path: "bans",
+        name: "channelSettingsBans",
+        component: () =>
+          import("../views/Channels/ChannelSettingsBansView.vue"),
+      },
+    ],
+  },
+  {
+    path: "/main",
+    name: "main",
+    component: () => import("../views/MainView.vue"),
+    children: [
+      {
+        path: "welcome",
+        name: "welcome",
+        component: () => import("../views/PongScreen/WelcomeView.vue"),
+      },
+      {
+        path: "home",
+        name: "home",
+        component: () => import("../views/PongScreen/HomeView.vue"),
+      },
+      {
+        path: "friendless",
+        name: "friendless",
+        component: () => import("../views/PongScreen/FriendlessView.vue"),
+      },
+      {
+        path: "friend-add",
+        name: "friendAdd",
+        component: () => import("../views/PongScreen/FriendAddView.vue"),
+      },
+      {
+        path: "friend-play",
+        name: "friendPlay",
+        component: () => import("../views/PongScreen/FriendPlayView.vue"),
+      },
+      {
+        path: "join-queue",
+        name: "joinQueue",
+        component: () => import("../views/PongScreen/JoinQueueView.vue"),
+      },
+      {
+        path: "game-mode",
+        name: "gameMode",
+        component: () => import("../views/PongScreen/GameModeView.vue"),
+      },
+      {
+        path: "waiting",
+        name: "waiting",
+        component: () => import("../views/PongScreen/WaitingOpponentView.vue"),
+      },
+      {
+        path: "nogame",
+        name: "nogame",
+        component: () => import("../views/PongScreen/NoGameView.vue"),
+      },
+    ],
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
+
+router.beforeEach(async (to, from) => {
+  const mainStore = useMainStore();
+
+  if (!mainStore.loggedIn && to.matched[0].path !== "/auth") {
+    await mainStore.refreshUserInfo();
+    if (!mainStore.loggedIn) router.push("/auth/sign-in");
+  }
+
+  // if (to.name === "joinQueue" && from.name === "pong") {
+  //   return "main/home";
+  // }
+});
+
+export default router;
